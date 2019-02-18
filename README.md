@@ -1,4 +1,4 @@
-# Glider Demo
+# Paper Plane Demo
 
 <p align="center">
   <img src="cover.png" alt="Cover"/>
