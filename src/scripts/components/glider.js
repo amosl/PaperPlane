@@ -29,11 +29,14 @@ class Glider extends Phaser.GameObjects.Sprite
     scene.add.existing(this);
 
     this.body.setGravityY(0);
-    this.body.setFriction(400, 0);
+    this.body.setBounceY(0.2);
     
     this.resetPosition();
   }
 
+  /**
+   *  Reset all states to start position
+   */
   resetPosition() {
     this.setPosition(100, 400);
     this.rotation=  -Phaser.Math.TAU / 4;
@@ -67,38 +70,13 @@ class Glider extends Phaser.GameObjects.Sprite
   }
 
 
-  pullUp() {
-    this.curState= GlideStates.PULL;
-
-    let pull= new Phaser.Math.Vector2(1,-5);
-    pull.normalize();
-    pull.scale(350);
-    console.log("PullUp: alt=" + this.y);
-    this.targetAlt= 150 + this.y;
-   
-    this.body.setAcceleration(pull.x, pull.y);
-  }
-
-
-  completeDive(stop=false)   {
-    if (stop)
-      console.log("Stop");
-    else
-      console.log("Complete: alt=" + this.y);
-    
-    this.curState= GlideStates.IDLE;
-    this.resetForces();
-    if (stop) {
-      this.body.stop();
-    }
-  }
-
   resetForces() {
     this.body.setAcceleration(0,0);
   }
 
   stop(delaySec=0) {
     if (delaySec==0) {
+      this.rotation =0;
       this.body.stop();
       this.scene.events.emit('roundComplete');
 
@@ -106,34 +84,30 @@ class Glider extends Phaser.GameObjects.Sprite
     }
       
     this.scene.time.delayedCall(delaySec*1000, ()=> {
+      this.rotation =0;
       this.body.stop();
       this.scene.events.emit('roundComplete');
     } );
       
   }
 
+  /**
+   * Smooth Rotation
+   * @param {*} dt 
+   */
   updateRotation(dt) {
     const dir= this.body.velocity;
-    const mag = dir.lengthSq();
-    const step = dt * 0.001 * 2; // convert to sec
+    const step = dt * 0.001 * 5; // convert to sec
     const targetRot = Phaser.Math.Angle.Wrap( dir.angle());
 
     // Update the rotation smoothly.
-    if (mag > 0.01) {
+    if ( dir.x > 0.05) {
       this.rotation = Phaser.Math.Linear(this.rotation, targetRot, step);
     }
   }
 
   update(t, dt)  {
-    super.update(t, dt);
-
-    console.log("Glider update " + t);
-  }
-
-
-  preUpdate(t, dt) {
-    super.preUpdate(t, dt);
-
+    
     this.updateRotation(dt);
 
 
@@ -157,6 +131,7 @@ class Glider extends Phaser.GameObjects.Sprite
      
     this.up = upward;
   }
+
 
 }
 

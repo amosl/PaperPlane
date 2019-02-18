@@ -114,7 +114,8 @@ export default class GameScene extends Phaser.Scene {
    *  @param {number} t Current internal clock time.
    *  @param {number} dt Time elapsed since last update.
    */
-  update(/* t, dt */) {
-
+  update( t, dt ) {
+   
+    this.glider.update(t, dt);
   }
 }

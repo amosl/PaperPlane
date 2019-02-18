@@ -28,7 +28,7 @@ module.exports = {
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({ gameName: 'Flyer Demo', template: 'src/index.html' }),
+    new HtmlWebpackPlugin({ gameName: 'Paper Plane', template: 'src/index.html' }),
     new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }, { from: 'src/pwa', to: '' }]),
     new InjectManifest({
       swSrc: path.resolve(__dirname, '../src/pwa/sw.js')

@@ -5,7 +5,6 @@ import 'phaser';
 import '@babel/polyfill';
 
 import SplashScreen from './scenes/splash-screen';
-import Title from './scenes/title';
 import GameScene from './scenes/game-scene';
 
 const DEFAULT_WIDTH = 1136;
