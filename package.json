@@ -1,7 +1,7 @@
 {
-  "name": "phaser-flyer",
+  "name": "paper-plane",
   "version": "1.0.0",
-  "description": "Flyer",
+  "description": "Paper Plane",
   "homepage": "https://github.com/yandeu/phaser-project-template-es6#readme",
   "main": "index.js",
   "scripts": {
