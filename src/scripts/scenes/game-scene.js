@@ -3,8 +3,11 @@ import Glider from '../components/glider';
 /* eslint-disable no-alert, no-console */
 /* eslint-disable no-unused-vars */
 
+/* global Phaser */
 
-export default class GameScene extends Phaser.Scene {
+
+
+class GameScene extends Phaser.Scene {
   /**
    *  A sample Game scene, displaying the Phaser logo.
    *
@@ -119,3 +122,5 @@ export default class GameScene extends Phaser.Scene {
     this.glider.update(t, dt);
   }
 }
+
+export default GameScene;

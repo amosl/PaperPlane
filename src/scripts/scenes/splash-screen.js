@@ -1,3 +1,5 @@
+/* global Phaser */
+
 //
 //
 class SplashScreen extends Phaser.Scene {

@@ -2,6 +2,8 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 
+/* global Phaser */
+
 
 const GlideStates = Object.freeze({
   IDLE: Symbol("idle"),
